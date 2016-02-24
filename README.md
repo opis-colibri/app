@@ -47,7 +47,7 @@ php -S localhost:8080 -t public router.php
     ServerName  website.dev
     DocumentRoot /var/www/website.dev/public
 
-    <Directory /var/www/<website.dev/public>
+    <Directory /var/www/website.dev/public>
 
         AllowOverride All
         Order allow,deny
