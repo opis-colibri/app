@@ -23,16 +23,16 @@ sudo mv composer.phar /usr/local/bin/composer
 
 cd /var/www
 
-composer create-project opis-colibri/app website.test 1.0.x-dev
+composer create-project opis-colibri/app website.dev 1.0.x-dev
 
 ```
 
 ### Built-in PHP web server
 
 ```bash
-# Open site folder
+# Go to site folder
 
-cd website.test
+cd website.dev
 
 # Start server
 
@@ -44,10 +44,10 @@ php -S localhost:8080 -t public router.php
 ```apache
 <VirtualHost *:80>
 
-    ServerName  website.test
-    DocumentRoot /var/www/website.test/public
+    ServerName  website.dev
+    DocumentRoot /var/www/website.dev/public
 
-    <Directory /var/www/<website.test/public>
+    <Directory /var/www/<website.dev/public>
 
         AllowOverride All
         Order allow,deny
