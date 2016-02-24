@@ -1,0 +1,43 @@
+{
+    "name": "opis-colibri/app",
+    "type": "project",
+    "description": "Default application for Opis Colibri framework",
+    "keywords": ["framework", "php", "opis", "opis colibri", "app", "application"],
+    "homepage": "http://opis.io",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Marius Sarca",
+            "email": "marius.sarca@gmail.com"
+        }
+    ],
+    "require": {
+        "opis/colibri": "1.0.x-dev",
+        "opis-colibri/module-installer": "1.1.x-dev",
+        "opis-colibri/install": "2.0.x-dev",
+        "opis-colibri/system": "2.0.x-dev",
+        "opis-colibri/manager": "2.0.x-dev",
+        "opis-colibri/commands": "2.0.x-dev",
+        "opis-colibri/welcome": "2.0.x-dev"
+    },
+    "config": {
+        "preferred-install": "dist"
+    },
+    "prefer-stable": true,
+    "minimum-stability": "dev",
+    "scripts": {
+        "post-update-cmd": ["php colibri update:collectors"]
+    },
+    "extra": {
+        "installer-paths": {
+            "system/modules/{$name}/": ["opis-colibri/system",
+                                        "opis-colibri/install",
+                                        "opis-colibri/manager",
+                                        "opis-colibri/commands"]
+        },
+        "installer-modules": ["install", "system", "commands"],
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}
