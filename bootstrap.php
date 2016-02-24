@@ -25,7 +25,6 @@ use Opis\Colibri\Application;
 
 $appInfo = new AppInfo(array(
     AppInfo::ROOT_PATH => __DIR__,
-    AppInfo::CORE_PATH => __DIR__ . '/vendor/opis-colibri/core',
     AppInfo::PUBLIC_PATH => __DIR__ . '/public',
     AppInfo::ASSETS_PATH => __DIR__ . '/public/assets',
     AppInfo::MODULES_PATH => __DIR__ . '/modules',
