@@ -25,17 +25,6 @@ use Opis\Colibri\Application;
 
 $appInfo = new AppInfo(array(
     AppInfo::ROOT_PATH => __DIR__,
-    AppInfo::PUBLIC_PATH => __DIR__ . '/public',
-    AppInfo::ASSETS_PATH => __DIR__ . '/public/assets',
-    AppInfo::MODULES_PATH => __DIR__ . '/modules',
-    AppInfo::STORAGES_PATH => __DIR__ . '/storage',
-    AppInfo::SYSTEM_PATH => __DIR__ . '/system',
-    AppInfo::SYSTEM_MODULES_PATH => __DIR__ . '/system/modules',
-    AppInfo::INSTALL_MODE => !file_exists(__DIR__ . '/storage/app.php'),
-    AppInfo::CLI_MODE => php_sapi_name() == 'cli',
-    AppInfo::MAIN_APP_FILE => __DIR__ . '/storage/app.php',
-    AppInfo::USER_APP_FILE => __DIR__ . '/app.php',
-    AppInfo::APP_CLASS => 'Opis\Colibri\App'
 ));
 
 $app = new Application($appInfo);
