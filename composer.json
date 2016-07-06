@@ -12,21 +12,18 @@
         }
     ],
     "require": {
-        "opis/colibri": "2.0.x-dev",
-        "opis-colibri/install": "3.0.x-dev",
-        "opis-colibri/system": "3.0.x-dev",
-        "opis-colibri/manager": "3.0.x-dev",
-        "opis-colibri/commands": "3.0.x-dev",
-        "opis-colibri/welcome": "3.0.x-dev"
+        "opis/colibri": "2.0.*@dev",
+        "opis-colibri/install": "3.0.*@dev",
+        "opis-colibri/system": "3.0.*@dev",
+        "opis-colibri/manager": "3.0.*@dev",
+        "opis-colibri/commands": "2.0.*@dev",
+        "opis-colibri/welcome": "3.0.*@dev"
     },
     "config": {
         "preferred-install": "dist"
     },
     "prefer-stable": true,
     "minimum-stability": "dev",
-    "scripts": {
-        "post-update-cmd": ["php colibri update:collectors"]
-    },
     "extra": {
         "branch-alias": {
             "dev-master": "2.0-dev"
