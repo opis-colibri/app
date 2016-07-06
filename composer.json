@@ -12,13 +12,12 @@
         }
     ],
     "require": {
-        "opis/colibri": "1.0.x-dev",
-        "opis-colibri/module-installer": "1.1.x-dev",
-        "opis-colibri/install": "2.0.x-dev",
-        "opis-colibri/system": "2.0.x-dev",
-        "opis-colibri/manager": "2.0.x-dev",
-        "opis-colibri/commands": "2.0.x-dev",
-        "opis-colibri/welcome": "2.0.x-dev"
+        "opis/colibri": "2.0.x-dev",
+        "opis-colibri/install": "3.0.x-dev",
+        "opis-colibri/system": "3.0.x-dev",
+        "opis-colibri/manager": "3.0.x-dev",
+        "opis-colibri/commands": "3.0.x-dev",
+        "opis-colibri/welcome": "3.0.x-dev"
     },
     "config": {
         "preferred-install": "dist"
@@ -29,15 +28,8 @@
         "post-update-cmd": ["php colibri update:collectors"]
     },
     "extra": {
-        "installer-paths": {
-            "system/modules/{$name}/": ["opis-colibri/system",
-                                        "opis-colibri/install",
-                                        "opis-colibri/manager",
-                                        "opis-colibri/commands"]
-        },
-        "installer-modules": ["install", "system", "commands"],
         "branch-alias": {
-            "dev-master": "1.0-dev"
+            "dev-master": "2.0-dev"
         }
     }
 }

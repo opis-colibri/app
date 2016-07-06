@@ -34,6 +34,9 @@ composer create-project opis-colibri/app website.dev 1.0.x-dev
 
 cd website.dev
 
+# Link assets
+ln -s ../assets public/assets
+
 # Start server
 
 php -S localhost:8080 -t public router.php
@@ -46,6 +49,7 @@ php -S localhost:8080 -t public router.php
 
     ServerName  website.dev
     DocumentRoot /var/www/website.dev/public
+    Alias /assets /var/www/website.dev/assets
 
     <Directory /var/www/website.dev/public>
 
