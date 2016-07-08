@@ -51,6 +51,7 @@
     "prefer-stable": true,
     "minimum-stability": "dev",
     "extra": {
+        "opis-colibri-installer": "opis-colibri/install",
         "branch-alias": {
             "dev-master": "2.0-dev"
         }
