@@ -52,6 +52,8 @@
     "minimum-stability": "dev",
     "extra": {
         "opis-colibri-installer": "opis-colibri/install",
+        "opis-colibri-enable": ["opis-colibri/system", "opis-colibri/commands",
+            "opis-colibri/manager", "opis-colibri/welcome"],
         "branch-alias": {
             "dev-master": "2.0-dev"
         }
