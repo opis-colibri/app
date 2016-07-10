@@ -15,7 +15,6 @@
         "opis/colibri": "2.0.*@dev",
         "opis-colibri/install": "3.0.*@dev",
         "opis-colibri/system": "3.0.*@dev",
-        "opis-colibri/manager": "3.0.*@dev",
         "opis-colibri/commands": "3.0.*@dev",
         "opis-colibri/welcome": "3.0.*@dev"
     },
@@ -27,6 +26,9 @@
     "scripts": {
         "pre-autoload-dump": [
             "Opis\\Colibri\\Composer\\EventHandler::onDumpAutoload"
+        ],
+        "post-root-package-install": [
+            "ln -s ../assets public/assets"
         ]
     },
     "extra": {
