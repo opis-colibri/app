@@ -11,38 +11,12 @@
             "email": "marius.sarca@gmail.com"
         }
     ],
-    "repositories": [
-        {
-            "type": "path",
-            "url": "~/PhpstormProjects/opis/colibri"
-        },
-        {
-            "type": "path",
-            "url": "~/PhpstormProjects/opis-colibri/install"
-        },
-        {
-            "type": "path",
-            "url": "~/PhpstormProjects/opis-colibri/system"
-        },
-        {
-            "type": "path",
-            "url": "~/PhpstormProjects/opis-colibri/manager"
-        },
-        {
-            "type": "path",
-            "url": "~/PhpstormProjects/opis-colibri/commands"
-        },
-        {
-            "type": "path",
-            "url": "~/PhpstormProjects/opis-colibri/welcome"
-        }
-    ],
     "require": {
         "opis/colibri": "2.0.*@dev",
         "opis-colibri/install": "3.0.*@dev",
         "opis-colibri/system": "3.0.*@dev",
         "opis-colibri/manager": "3.0.*@dev",
-        "opis-colibri/commands": "2.0.*@dev",
+        "opis-colibri/commands": "3.0.*@dev",
         "opis-colibri/welcome": "3.0.*@dev"
     },
     "config": {
@@ -58,11 +32,8 @@
     "extra": {
         "application": {
             "installer": "opis-colibri/install",
-            "modules": ["opis-colibri/system"]
+            "modules": ["opis-colibri/welcome", "opis-colibri/commands"]
         },
-        "opis-colibri-installer": "opis-colibri/install",
-        "opis-colibri-enable": ["opis-colibri/system", "opis-colibri/commands",
-            "opis-colibri/manager", "opis-colibri/welcome"],
         "branch-alias": {
             "dev-master": "2.0-dev"
         }
