@@ -50,7 +50,16 @@
     },
     "prefer-stable": true,
     "minimum-stability": "dev",
+    "scripts": {
+        "pre-autoload-dump": [
+            "Opis\\Colibri\\Composer\\EventHandler::onDumpAutoload"
+        ]
+    },
     "extra": {
+        "application": {
+            "installer": "opis-colibri/install",
+            "modules": ["opis-colibri/system"]
+        },
         "opis-colibri-installer": "opis-colibri/install",
         "opis-colibri-enable": ["opis-colibri/system", "opis-colibri/commands",
             "opis-colibri/manager", "opis-colibri/welcome"],

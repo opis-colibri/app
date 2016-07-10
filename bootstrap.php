@@ -28,11 +28,6 @@ error_reporting(-1);
 
 $loader = require_once 'vendor/autoload.php';
 
-
-$appInfo = new AppInfo(array(
-    AppInfo::ROOT_DIR => __DIR__,
-));
-
-$app = new Application($appInfo, $loader);
+$app = new Application(__DIR__, $loader);
 
 return $app->bootstrap();
