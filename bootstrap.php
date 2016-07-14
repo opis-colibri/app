@@ -18,15 +18,26 @@
  * limitations under the License.
  * ============================================================================ */
 
-use Opis\Colibri\AppInfo;
 use Opis\Colibri\Application;
+use Whoops\Run as WhoopsRun;
+use Whoops\Handler\JsonResponseHandler;
+use Whoops\Handler\PrettyPageHandler;
+use Whoops\Util\Misc;
 
+error_reporting(-1);
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 ini_set('opcache.enable', 0);
-error_reporting(-1);
 
 $loader = require_once 'vendor/autoload.php';
+
+if(getenv('APP_PRODUCTION') === false){
+    $whoops = (new WhoopsRun())->pushHandler(new PrettyPageHandler());
+    if(Misc::isAjaxRequest()){
+        $whoops->pushHandler(new JsonResponseHandler());
+    }
+    $whoops->register();
+}
 
 $app = new Application(__DIR__, $loader);
 

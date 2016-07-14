@@ -12,6 +12,7 @@
         }
     ],
     "require": {
+        "filp/whoops": "2.*",
         "opis/colibri": "2.0.*@dev",
         "opis-colibri/install": "3.0.*@dev",
         "opis-colibri/system": "3.0.*@dev",
@@ -24,9 +25,6 @@
     "prefer-stable": true,
     "minimum-stability": "dev",
     "scripts": {
-        "pre-autoload-dump": [
-            "Opis\\Colibri\\Composer\\EventHandler::onDumpAutoload"
-        ],
         "post-root-package-install": [
             "ln -s ../assets public/assets"
         ]
