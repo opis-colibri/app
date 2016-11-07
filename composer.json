@@ -24,11 +24,6 @@
     },
     "prefer-stable": true,
     "minimum-stability": "dev",
-    "scripts": {
-        "post-root-package-install": [
-            "ln -s ../assets public/assets"
-        ]
-    },
     "extra": {
         "application": {
             "installer": "opis-colibri/install",
