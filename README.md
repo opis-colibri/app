@@ -23,7 +23,7 @@ sudo mv composer.phar /usr/local/bin/composer
 
 cd /var/www
 
-composer create-project opis-colibri/app website.dev 1.0.x-dev
+composer create-project opis-colibri/app website.dev 2.0.x-dev
 
 ```
 
