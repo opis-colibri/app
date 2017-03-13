@@ -1,0 +1,18 @@
+{
+  "name": "opis-colibri.app",
+  "homepage": "https://github.com/opis-colibri/app",
+  "authors": [
+    "Marius Sarca <marius.sarca@gmail.com>"
+  ],
+  "description": "Opis Colibri application",
+  "main": "",
+  "license": "Apache 2.0",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
