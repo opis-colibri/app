@@ -13,7 +13,7 @@
     ],
     "require": {
         "filp/whoops": "2.*",
-        "opis/colibri": "2.0-alpha.1",
+        "opis/colibri": "~2.0-alpha",
         "opis-colibri/install": "3.0.*@dev",
         "opis-colibri/manager": "3.0.*@dev",
         "opis-colibri/commands": "3.0.*@dev",
