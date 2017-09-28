@@ -17,7 +17,7 @@
  * ============================================================================ */
 
 /** @var \Opis\Colibri\Application $app */
-$app = require_once 'bootstrap.php';
+$app = require_once 'app.php';
 
 if (!$app->getAppInfo()->cliMode()) {
     die('CLI Mode only' . PHP_EOL);
