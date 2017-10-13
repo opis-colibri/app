@@ -32,14 +32,21 @@ if(false !== $pos = strpos($path, '?')){
 $file = __DIR__ . $path;
 
 // If is an asset
-if(strpos($path, '/assets/') === 0 && file_exists($file) && is_file($file)){
-    $mime = get_mime_types();
-    $ext = pathinfo($file, PATHINFO_EXTENSION);
-    $contentType = $mime[$ext] ?? 'application/octet-stream';
-    header('Content-Type: ' . $contentType);
-    readfile($file);
+if(strpos($path, '/assets/') === 0){
 
-    return;
+    $original = $file;
+    $file = __DIR__ . substr($path, strlen('/assets/'));
+
+    if(file_exists($file) && is_file($file)){
+        $mime = get_mime_types();
+        $ext = pathinfo($file, PATHINFO_EXTENSION);
+        $contentType = $mime[$ext] ?? 'application/octet-stream';
+        header('Content-Type: ' . $contentType);
+        readfile($file);
+        return;
+    }
+
+    $file = $original;
 }
 
 $file = $_SERVER['DOCUMENT_ROOT'] . $path;

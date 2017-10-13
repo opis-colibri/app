@@ -46,7 +46,7 @@ php -S localhost:8080 -t public router.php
 
     ServerName  website.dev
     DocumentRoot /var/www/website.dev/public
-    Alias /assets /var/www/website.dev/assets
+    Alias /assets /var/www/website.dev/node_modules
 
     <Directory /var/www/website.dev/public>
 
@@ -72,7 +72,7 @@ server {
     charset utf-8;
 
     location /assets/ {
-        alias "/var/www/website.dev/assets/";
+        alias "/var/www/website.dev/node_modules/";
         try_files $uri $uri/ /index.php?$query_string;
     }
 
