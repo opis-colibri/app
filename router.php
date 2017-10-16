@@ -35,7 +35,7 @@ $file = __DIR__ . $path;
 if(strpos($path, '/assets/') === 0){
 
     $original = $file;
-    $file = __DIR__ . substr($path, strlen('/assets/'));
+    $file = __DIR__ . '/node_modules/' . substr($path, strlen('/assets/'));
 
     if(file_exists($file) && is_file($file)){
         $mime = get_mime_types();
