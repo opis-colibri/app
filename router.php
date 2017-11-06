@@ -29,24 +29,22 @@ if(false !== $pos = strpos($path, '?')){
     $path = substr($path, 0, $len - ($len - $pos));
 }
 
-$file = __DIR__ . $path;
+$path = urldecode($path);
 
-// If is an asset
-if(strpos($path, '/assets/') === 0){
+$assetsPaths = [
+    '/assets/' => __DIR__ . $path,
+];
 
-    $original = $file;
-    $file = __DIR__ . '/node_modules/' . substr($path, strlen('/assets/'));
-
-    if(file_exists($file) && is_file($file)){
+foreach ($assetsPaths as $assetPath => $assetFile){
+    if(strpos($path, $assetPath) === 0 && file_exists($assetFile) && is_file($assetFile)){
         $mime = get_mime_types();
-        $ext = pathinfo($file, PATHINFO_EXTENSION);
+        $ext = pathinfo($assetFile, PATHINFO_EXTENSION);
         $contentType = $mime[$ext] ?? 'application/octet-stream';
         header('Content-Type: ' . $contentType);
-        readfile($file);
+        readfile($assetFile);
+
         return;
     }
-
-    $file = $original;
 }
 
 $file = $_SERVER['DOCUMENT_ROOT'] . $path;
@@ -57,7 +55,7 @@ if (file_exists($file) && is_file($file)){
         return false;
     }
     $mime = get_mime_types();
-    header('Content-Type: ' . $mime[$ext] ?? 'application/octet-stream');
+    header('Content-Type: ' . ($mime[$ext] ?? 'application/octet-stream'));
     readfile($file);
 
     return;
