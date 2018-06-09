@@ -11,21 +11,24 @@
             "email": "marius.sarca@gmail.com"
         }
     ],
+    "repositories": [
+        {"type": "path", "url": "/Users/msarca/code/opis-colibri/welcome"}
+    ],
     "require": {
         "filp/whoops": "2.*",
-        "opis/colibri": "2.0.x-dev",
-        "opis-colibri/install": "3.0.x-dev",
-        "opis-colibri/welcome": "3.0.x-dev"
+        "opis-colibri/welcome": "master-dev as 3.0.x-dev"
     },
     "config": {
         "preferred-install": "dist"
     },
     "prefer-stable": true,
     "minimum-stability": "dev",
+    "scripts": {
+        "post-create-project-cmd": [
+            "@php colibri install --enable opis-colibri/welcome"
+        ]
+    },
     "extra": {
-        "application": {
-            "modules": ["opis-colibri/welcome"]
-        },
         "branch-alias": {
             "dev-master": "2.0-dev"
         }

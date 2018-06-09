@@ -1,6 +1,6 @@
 <?php
 /* ===========================================================================
- * Copyright 2013-2016 The Opis Project
+ * Copyright 2014-2018 The Opis Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,15 +22,17 @@ use Whoops\Handler\PrettyPageHandler;
 use Whoops\Handler\PlainTextHandler;
 use Whoops\Util\Misc;
 
-error_reporting(-1);
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-ini_set('opcache.enable', 0);
-
-$loader = require_once 'vendor/autoload.php';
+require_once 'vendor/autoload.php';
 
 if(getenv('APP_PRODUCTION') === false){
+
+    error_reporting(-1);
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    ini_set('opcache.enable', 0);
+
     $whoops = new WhoopsRun();
+
     if(Misc::isCommandLine()){
         $whoops->pushHandler(new PlainTextHandler());
     } elseif (Misc::isAjaxRequest()){
@@ -38,9 +40,10 @@ if(getenv('APP_PRODUCTION') === false){
     } else{
         $whoops->pushHandler(new PrettyPageHandler());
     }
+
     $whoops->register();
 }
 
-$app = new Application(__DIR__, $loader);
+$app = new Application(__DIR__);
 
 return $app->bootstrap();
