@@ -24,7 +24,7 @@ use Whoops\Util\Misc;
 
 require_once 'vendor/autoload.php';
 
-if(getenv('APP_PRODUCTION') === false){
+if (getenv('APP_PRODUCTION') === false) {
 
     error_reporting(-1);
     ini_set('display_errors', 1);
@@ -33,11 +33,11 @@ if(getenv('APP_PRODUCTION') === false){
 
     $whoops = new WhoopsRun();
 
-    if(Misc::isCommandLine()){
+    if (Misc::isCommandLine()) {
         $whoops->pushHandler(new PlainTextHandler());
-    } elseif (Misc::isAjaxRequest()){
+    } elseif (Misc::isAjaxRequest()) {
         $whoops->pushHandler(new JsonResponseHandler());
-    } else{
+    } else {
         $whoops->pushHandler(new PrettyPageHandler());
     }
 

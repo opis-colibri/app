@@ -27,7 +27,8 @@ use Opis\DataStore\Drivers\PHPFile as ConfigDriver;
 use Opis\Intl\Translator\Drivers\PHPFile as TranslatorDriver;
 
 
-return new class implements IBootstrap {
+return new class implements IBootstrap
+{
     /**
      * @inheritDoc
      */

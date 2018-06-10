@@ -24,7 +24,7 @@
 
 $path = $_SERVER['REQUEST_URI'];
 
-if(false !== $pos = strpos($path, '?')){
+if (false !== $pos = strpos($path, '?')) {
     $len = strlen($path);
     $path = substr($path, 0, $len - ($len - $pos));
 }
@@ -35,8 +35,8 @@ $assetsPaths = [
     '/assets/' => __DIR__ . $path,
 ];
 
-foreach ($assetsPaths as $assetPath => $assetFile){
-    if(strpos($path, $assetPath) === 0 && file_exists($assetFile) && is_file($assetFile)){
+foreach ($assetsPaths as $assetPath => $assetFile) {
+    if (strpos($path, $assetPath) === 0 && file_exists($assetFile) && is_file($assetFile)) {
         $mime = get_mime_types();
         $ext = pathinfo($assetFile, PATHINFO_EXTENSION);
         $contentType = $mime[$ext] ?? 'application/octet-stream';
@@ -49,9 +49,9 @@ foreach ($assetsPaths as $assetPath => $assetFile){
 
 $file = $_SERVER['DOCUMENT_ROOT'] . $path;
 
-if (file_exists($file) && is_file($file)){
+if (file_exists($file) && is_file($file)) {
     $ext = pathinfo($file, PATHINFO_EXTENSION);
-    if(supported_extension($ext)){
+    if (supported_extension($ext)) {
         return false;
     }
     $mime = get_mime_types();
@@ -145,7 +145,50 @@ function get_mime_types()
 
 function supported_extension($ext)
 {
-    return in_array($ext, ['xml', 'xsl', 'xsd', '3gp', 'apk', 'avi', 'bmp', 'csv', 'doc', 'docx', 'flac', 'gz', 'gzip',
-        'ics', 'kml', 'kmz', 'm4a', 'mp3', 'mp4', 'mpg', 'mpeg', 'mov', 'odp', 'ods', 'odt', 'oga', 'pdf', 'pptx', 'pps',
-        'qt', 'swf', 'tar', 'text', 'tif', 'wav', 'wmv', 'xls', 'xlsx', 'zip', 'ogg', 'ogv', 'webm', 'htm', 'svg']);
+    return in_array($ext, [
+        'xml',
+        'xsl',
+        'xsd',
+        '3gp',
+        'apk',
+        'avi',
+        'bmp',
+        'csv',
+        'doc',
+        'docx',
+        'flac',
+        'gz',
+        'gzip',
+        'ics',
+        'kml',
+        'kmz',
+        'm4a',
+        'mp3',
+        'mp4',
+        'mpg',
+        'mpeg',
+        'mov',
+        'odp',
+        'ods',
+        'odt',
+        'oga',
+        'pdf',
+        'pptx',
+        'pps',
+        'qt',
+        'swf',
+        'tar',
+        'text',
+        'tif',
+        'wav',
+        'wmv',
+        'xls',
+        'xlsx',
+        'zip',
+        'ogg',
+        'ogv',
+        'webm',
+        'htm',
+        'svg',
+    ]);
 }
