@@ -1,4 +1,14 @@
 <?php
+
+$file = implode(DIRECTORY_SEPARATOR, [__DIR__, 'storage', 'bootstrap.php']);
+
+if (!file_exists($file)) {
+    file_put_contents($file, get_php_code());
+}
+
+function get_php_code() {
+    return <<<'PHPCODE'
+<?php
 /* ===========================================================================
  * Copyright 2014-2018 The Opis Project
  *
@@ -47,3 +57,5 @@ return new class implements IBootstrap
             ->setSessionHandler(new \SessionHandler());
     }
 };
+PHPCODE;
+}
