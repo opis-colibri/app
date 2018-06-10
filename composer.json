@@ -25,6 +25,7 @@
     "minimum-stability": "dev",
     "scripts": {
         "post-create-project-cmd": [
+            "@php -r \"rename('storage' . DIRECTORY_SEPARATOR . '.bootstrap.php', 'storage' . DIRECTORY_SEPARATOR . 'bootstrap.php');\"",
             "@php colibri install --enable opis-colibri/welcome"
         ]
     },
