@@ -11,12 +11,9 @@
             "email": "marius.sarca@gmail.com"
         }
     ],
-    "repositories": [
-        {"type": "path", "url": "/Users/msarca/code/opis-colibri/welcome"}
-    ],
     "require": {
         "filp/whoops": "2.*",
-        "opis-colibri/welcome": "master-dev as 3.0.x-dev"
+        "opis-colibri/welcome": "3.0.x-dev"
     },
     "config": {
         "preferred-install": "dist"
@@ -25,8 +22,9 @@
     "minimum-stability": "dev",
     "scripts": {
         "post-create-project-cmd": [
-            "@php -r \"rename('storage' . DIRECTORY_SEPARATOR . '.bootstrap.php', 'storage' . DIRECTORY_SEPARATOR . 'bootstrap.php');\"",
-            "@php colibri install --enable opis-colibri/welcome"
+            "@php colibri bootstrap-init",
+            "@php colibri install --enable opis-colibri/welcome",
+            "@php colibri collect"
         ]
     },
     "extra": {
