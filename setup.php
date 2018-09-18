@@ -10,7 +10,7 @@ function get_php_code() {
     return <<<'PHPCODE'
 <?php
 /* ===========================================================================
- * Copyright 2014-2018 The Opis Project
+ * Copyright 2018 Zindex Software
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
