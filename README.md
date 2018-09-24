@@ -46,7 +46,7 @@ php -S localhost:8080 -t public router.php
 
     ServerName  website.dev
     DocumentRoot /var/www/website.dev/public
-    Alias /assets /var/www/website.dev/node_modules
+    Alias /assets /var/www/website.dev/assets
 
     <Directory /var/www/website.dev/public>
 
@@ -64,7 +64,7 @@ php -S localhost:8080 -t public router.php
 ```nginx
 server {
     listen 80;
-    server_name website.dev
+    server_name website.dev;
     root "/var/www/website.dev/public";
 
     index index.html index.htm index.php;
@@ -72,7 +72,7 @@ server {
     charset utf-8;
 
     location /assets/ {
-        alias "/var/www/website.dev/node_modules/";
+        alias "/var/www/website.dev/assets/";
         try_files $uri $uri/ /index.php?$query_string;
     }
 
