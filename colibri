@@ -23,4 +23,4 @@ if (!$app->getAppInfo()->cliMode()) {
     die('CLI Mode only' . PHP_EOL);
 }
 
-$app->getConsole()->run();
+exit($app->getConsole()->run());
