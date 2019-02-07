@@ -1,6 +1,21 @@
 <?php
+/* ===========================================================================
+ * Copyright 2018-2019 Zindex Software
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ============================================================================ */
 
-$file = implode(DIRECTORY_SEPARATOR, [__DIR__, 'storage', 'bootstrap.php']);
+$file = implode(DIRECTORY_SEPARATOR, [__DIR__, 'storage', 'init.php']);
 
 if (!file_exists($file)) {
     file_put_contents($file, get_php_code());
@@ -10,7 +25,7 @@ function get_php_code() {
     return <<<'PHPCODE'
 <?php
 /* ===========================================================================
- * Copyright 2018 Zindex Software
+ * Copyright 2018-2019 Zindex Software
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,8 +41,8 @@ function get_php_code() {
  * ============================================================================ */
 
 use Opis\Colibri\Core\{
-    IBootstrap,
-    ISettingsContainer
+    IApplicationInitializer,
+    IApplicationContainer
 };
 
 use Opis\Database\Connection;
@@ -37,14 +52,14 @@ use Opis\DataStore\Drivers\PHPFile as ConfigDriver;
 use Opis\Intl\Translator\Drivers\PHPFile as TranslatorDriver;
 
 
-return new class implements IBootstrap
+return new class implements IApplicationInitializer
 {
     /**
      * @inheritDoc
      */
-    public function bootstrap(ISettingsContainer $app)
+    public function init(IApplicationContainer $app)
     {
-
+        // Uncomment and set your timezone
         // date_default_timezone_set('UTC');
 
         $dir = $app->getAppInfo()->writableDir();

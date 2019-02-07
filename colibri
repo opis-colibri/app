@@ -1,7 +1,7 @@
 #!/usr/bin/env php
 <?php
 /* ===========================================================================
- * Copyright 2018 Zindex Software
+ * Copyright 2018-2019 Zindex Software
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
  * ============================================================================ */
 
 /** @var \Opis\Colibri\Application $app */
-$app = require_once 'app.php';
+$app = require_once 'bootstrap.php';
 
 if (!$app->getAppInfo()->cliMode()) {
     die('CLI Mode only' . PHP_EOL);
