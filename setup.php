@@ -51,7 +51,6 @@ use Opis\Cache\Drivers\File as CacheDriver;
 use Opis\DataStore\Drivers\JSONFile as ConfigDriver;
 use Opis\Intl\Translator\Drivers\JsonFile as TranslatorDriver;
 
-
 return new class implements IApplicationInitializer
 {
     /**
@@ -64,8 +63,8 @@ return new class implements IApplicationInitializer
 
         $dir = $app->getAppInfo()->writableDir();
 
-        $app->setCacheDriver(new CacheDriver($dir . DIRECTORY_SEPARATOR . 'cache', 'system'))
-            ->setConfigDriver(new ConfigDriver($dir . DIRECTORY_SEPARATOR . 'config', 'system'))
+        $app->setCacheDriver(new CacheDriver($dir . DIRECTORY_SEPARATOR . 'cache'))
+            ->setConfigDriver(new ConfigDriver($dir . DIRECTORY_SEPARATOR . 'config'))
             ->setTranslatorDriver(new TranslatorDriver($dir . DIRECTORY_SEPARATOR . 'intl'))
             ->setDefaultLogger(new Logger())
             //->setDatabaseConnection(new Connection(""))
