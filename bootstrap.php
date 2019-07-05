@@ -17,9 +17,11 @@
 
 use Opis\Colibri\Application;
 use Whoops\Run as WhoopsRun;
-use Whoops\Handler\JsonResponseHandler;
-use Whoops\Handler\PrettyPageHandler;
-use Whoops\Handler\PlainTextHandler;
+use Whoops\Handler\{
+    JsonResponseHandler,
+    PrettyPageHandler,
+    PlainTextHandler
+};
 use Whoops\Util\Misc;
 
 require_once 'vendor/autoload.php';
@@ -29,16 +31,15 @@ if (getenv('APP_PRODUCTION') === false) {
     error_reporting(-1);
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
-    ini_set('opcache.enable', 0);
 
     $whoops = new WhoopsRun();
 
     if (Misc::isCommandLine()) {
-        $whoops->pushHandler(new PlainTextHandler());
+        $whoops->appendHandler(new PlainTextHandler());
     } elseif (Misc::isAjaxRequest()) {
-        $whoops->pushHandler(new JsonResponseHandler());
+        $whoops->appendHandler(new JsonResponseHandler());
     } else {
-        $whoops->pushHandler(new PrettyPageHandler());
+        $whoops->appendHandler(new PrettyPageHandler());
     }
 
     $whoops->register();

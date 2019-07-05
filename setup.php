@@ -47,9 +47,9 @@ use Opis\Colibri\Core\{
 
 use Opis\Database\Connection;
 use Psr\Log\NullLogger as Logger;
-use Opis\Cache\Drivers\Memory as CacheDriver;
-use Opis\DataStore\Drivers\PHPFile as ConfigDriver;
-use Opis\Intl\Translator\Drivers\PHPFile as TranslatorDriver;
+use Opis\Cache\Drivers\File as CacheDriver;
+use Opis\DataStore\Drivers\JSONFile as ConfigDriver;
+use Opis\Intl\Translator\Drivers\JsonFile as TranslatorDriver;
 
 
 return new class implements IApplicationInitializer
@@ -64,7 +64,7 @@ return new class implements IApplicationInitializer
 
         $dir = $app->getAppInfo()->writableDir();
 
-        $app->setCacheDriver(new CacheDriver())
+        $app->setCacheDriver(new CacheDriver($dir . DIRECTORY_SEPARATOR . 'cache', 'system'))
             ->setConfigDriver(new ConfigDriver($dir . DIRECTORY_SEPARATOR . 'config', 'system'))
             ->setTranslatorDriver(new TranslatorDriver($dir . DIRECTORY_SEPARATOR . 'intl'))
             ->setDefaultLogger(new Logger())
