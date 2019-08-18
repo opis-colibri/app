@@ -50,6 +50,7 @@ use Psr\Log\NullLogger as Logger;
 use Opis\Cache\Drivers\File as CacheDriver;
 use Opis\DataStore\Drivers\JSONFile as ConfigDriver;
 use Opis\Intl\Translator\Drivers\JsonFile as TranslatorDriver;
+use Opis\Session\Handlers\File as SessionHandler;
 
 return new class implements IApplicationInitializer
 {
@@ -68,7 +69,7 @@ return new class implements IApplicationInitializer
             ->setTranslatorDriver(new TranslatorDriver($dir . DIRECTORY_SEPARATOR . 'intl'))
             ->setDefaultLogger(new Logger())
             //->setDatabaseConnection(new Connection(""))
-            ->setSessionHandler(new \SessionHandler());
+            ->setSessionHandler(new SessionHandler($dir . DIRECTORY_SEPARATOR . 'session'));
     }
 };
 PHPCODE;
