@@ -20,11 +20,6 @@
     },
     "prefer-stable": true,
     "minimum-stability": "dev",
-    "scripts": {
-        "post-create-project-cmd": [
-            "@php setup.php"
-        ]
-    },
     "extra": {
         "branch-alias": {
             "dev-master": "2.0-dev"
