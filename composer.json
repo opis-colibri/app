@@ -11,6 +11,12 @@
             "email": "marius.sarca@gmail.com"
         }
     ],
+    "repositories": {
+        "local": {
+            "type": "path",
+            "url": "./local/*"
+        }
+    },
     "require": {
         "filp/whoops": "2.*",
         "opis/colibri": "2.0.x-dev"
