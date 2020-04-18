@@ -23,7 +23,7 @@
     },
     "require": {
         "filp/whoops": "2.*",
-        "opis-colibri/core": "1.0.x-dev"
+        "opis-colibri/core": "^1.0"
     },
     "config": {
         "preferred-install": "dist"
