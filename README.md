@@ -1,11 +1,9 @@
-Opis Colibri App
-============
+Opis Colibri Framework
+======================
 [![Latest Stable Version](https://poser.pugx.org/opis-colibri/app/version.svg)](https://packagist.org/packages/opis-colibri/app)
 [![Latest Unstable Version](https://poser.pugx.org/opis-colibri/app/v/unstable.svg)](//packagist.org/packages/opis-colibri/app)
 [![License](https://poser.pugx.org/opis-colibri/app/license.svg)](https://packagist.org/packages/opis-colibri/app)
 
-Default application for the Opis Colibri framework
--------------
 
 ### Installation
 
