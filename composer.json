@@ -26,10 +26,17 @@
         "opis-colibri/core": "^1.0"
     },
     "config": {
+        "process-timeout": 0,
         "preferred-install": "dist"
     },
     "prefer-stable": true,
     "minimum-stability": "dev",
+    "scripts": {
+        "docker": "@docker-run composer",
+        "docker-run": "docker run -t --rm -v `pwd`:/code docker.pkg.github.com/opis-colibri/app/cli-alpine",
+        "docker-serve": "docker run -t --rm -v `pwd`:/code -p 8080:80 docker.pkg.github.com/opis-colibri/app/cli-alpine",
+        "docker-serve-app": "docker run -t --rm -v `pwd`:/code -p $PORT:80 docker.pkg.github.com/opis-colibri/app/cli-alpine"
+    },
     "extra": {
         "branch-alias": {
             "dev-master": "1.0-dev"

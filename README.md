@@ -5,36 +5,20 @@ Opis Colibri Framework
 [![License](https://poser.pugx.org/opis-colibri/app/license.svg)](https://packagist.org/packages/opis-colibri/app)
 
 
-### Installation
+## Installation
+
+Before trying to install Opis Colibri make sure you have Docker installed.
 
 ```bash
-
-# Install composer
-
-curl -sS https://getcomposer.org/installer | php
-
-# Make it globally available (optional)
-
-sudo mv composer.phar /usr/local/bin/composer
-
-# Install Opis Colibri
-
-cd /var/www
-
-composer create-project opis-colibri/app website.dev 2.0.x-dev
-
+docker pull docker.pkg.github.com/opis-colibri/app/cli-alpine:latest
+git clone https://github.com/opis-colibri/app.git myapp
+cd myapp && composer docker install
 ```
 
-### Built-in PHP web server
+Once the project is installed, you can start the built-in PHP server. The server will start on port `8080`.
 
 ```bash
-# Go to site folder
-
-cd website.dev
-
-# Start server
-
-php -S localhost:8080 -t public router.php
+composer docker-serve
 ```
 
 ### Apache configuration
