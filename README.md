@@ -21,6 +21,12 @@ Once the project is installed, you can start the built-in PHP server. The server
 composer docker-serve
 ```
 
+### Local server
+
+```bash
+ php -S localhost:8080 -c php.ini -t public router.php
+```
+
 ### Apache configuration
 
 ```apache
