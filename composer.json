@@ -22,8 +22,8 @@
         }
     },
     "require": {
+        "php": "^7.4",
         "filp/whoops": "2.*",
-        "opis/closure": "4.x-dev",
         "opis-colibri/core": "2020.x-dev"
     },
     "config": {
@@ -41,7 +41,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "1.0-dev"
+            "dev-master": "2020.x-dev"
         }
     }
 }

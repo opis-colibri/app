@@ -26,8 +26,6 @@ use Whoops\Util\Misc;
 
 require_once 'vendor/autoload.php';
 
-\Opis\Closure\init();
-
 if (getenv('APP_PRODUCTION') === false) {
 
     error_reporting(-1);
