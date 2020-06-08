@@ -1,6 +1,6 @@
 <?php
 /* ===========================================================================
- * Copyright 2018-2019 Zindex Software
+ * Copyright 2018-2020 Zindex Software
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,8 +23,12 @@ use Whoops\Handler\{
     PlainTextHandler
 };
 use Whoops\Util\Misc;
+use function Opis\Closure\init as InitSerializableClosure;
 
 require_once 'vendor/autoload.php';
+
+// Register serializable closure
+InitSerializableClosure();
 
 if (getenv('APP_PRODUCTION') === false) {
 

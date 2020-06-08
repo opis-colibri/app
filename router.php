@@ -1,6 +1,6 @@
 <?php
 /* ===========================================================================
- * Copyright 2018-2019 Zindex Software
+ * Copyright 2018-2020 Zindex Software
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,30 +36,18 @@ $assetsPaths = [
 ];
 
 foreach ($assetsPaths as $assetPath => $assetFile) {
-    if (strpos($path, $assetPath) === 0 && file_exists($assetFile) && is_file($assetFile)) {
-        $mime = get_mime_types();
-        $ext = pathinfo($assetFile, PATHINFO_EXTENSION);
-        $contentType = $mime[$ext] ?? 'application/octet-stream';
-        header('Content-Type: ' . $contentType);
-        readfile($assetFile);
-        return;
+    if (strpos($path, $assetPath) === 0 && is_file($assetFile)) {
+        return pass_file($assetFile, false);
     }
 }
 
 $file = $_SERVER['DOCUMENT_ROOT'] . $path;
 
-if (file_exists($file) && is_file($file)) {
-    $ext = pathinfo($file, PATHINFO_EXTENSION);
-    if (supported_extension($ext)) {
-        return false;
-    }
-    $mime = get_mime_types();
-    header('Content-Type: ' . ($mime[$ext] ?? 'application/octet-stream'));
-    readfile($file);
-    return;
+if (is_file($file)) {
+    return pass_file($file, true);
 }
 
-require __DIR__ . '/public/index.php';
+require './public/index.php';
 
 function get_mime_types()
 {
@@ -147,5 +135,18 @@ function supported_extension($ext)
         'kmz', 'm4a', 'mp3', 'mp4', 'mpg', 'mpeg', 'mov', 'odp', 'ods', 'odt', 'oga', 'pdf', 'pptx', 'pps', 'qt',
         'swf', 'tar', 'text', 'tif', 'wav', 'wmv', 'xls', 'xlsx', 'zip', 'ogg', 'ogv', 'webm', 'htm', 'svg',
     ];
+
     return in_array($ext, $extensions);
+}
+
+function pass_file($file, $check = false)
+{
+    $ext = pathinfo($file, PATHINFO_EXTENSION);
+    if ($check && !supported_extension($ext)) {
+        return false;
+    }
+    header('Content-Type: ' . (get_mime_types()[$ext] ?? 'application/octet-stream'));
+    readfile($file);
+
+    return true;
 }
