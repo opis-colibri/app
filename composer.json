@@ -3,7 +3,7 @@
     "type": "project",
     "description": "Opis Colibri Framework",
     "keywords": [ "opis colibri", "framework", "php", "opis"],
-    "homepage": "http://opis.io",
+    "homepage": "https://opis.io",
     "license": "Apache-2.0",
     "authors": [
         {
@@ -22,7 +22,7 @@
         }
     },
     "require": {
-        "php": "^7.4",
+        "php": "^7.4|^8.0",
         "filp/whoops": "2.*",
         "opis-colibri/core": "2020.x-dev"
     },

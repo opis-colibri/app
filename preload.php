@@ -17,4 +17,4 @@
 
 require_once './vendor/autoload.php';
 
-\Opis\Closure\init(true);
+\Opis\Closure\SerializableClosure::preload();

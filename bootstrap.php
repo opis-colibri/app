@@ -23,8 +23,12 @@ use Whoops\Handler\{
     PlainTextHandler
 };
 use Whoops\Util\Misc;
+use Opis\Closure\SerializableClosure;
 
 require_once 'vendor/autoload.php';
+
+// Init serializable closures
+SerializableClosure::init();
 
 if (getenv('APP_PRODUCTION') === false) {
 
