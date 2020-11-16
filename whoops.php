@@ -15,20 +15,22 @@
  * limitations under the License.
  * ============================================================================ */
 
-use Opis\Colibri\Application;
-use Opis\Closure\SerializableClosure;
+use Whoops\Util\Misc;
+use Whoops\Run as WhoopsRun;
+use Whoops\Handler\{
+    JsonResponseHandler,
+    PrettyPageHandler,
+    PlainTextHandler
+};
 
-require_once __DIR__ . '/vendor/autoload.php';
+$whoops = new WhoopsRun();
 
-if (getenv('APP_PRODUCTION') === false) {
-    error_reporting(E_ALL);
-    ini_set('display_errors', 1);
-    require_once __DIR__ . '/whoops.php';
+if (Misc::isCommandLine()) {
+    $whoops->appendHandler(new PlainTextHandler());
+} elseif (Misc::isAjaxRequest()) {
+    $whoops->appendHandler(new JsonResponseHandler());
+} else {
+    $whoops->appendHandler(new PrettyPageHandler());
 }
 
-// Init serializable closures
-SerializableClosure::init();
-
-$app = new Application(__DIR__);
-
-return $app->bootstrap();
+$whoops->register();

@@ -23,8 +23,10 @@
     },
     "require": {
         "php": "^7.4|^8.0",
-        "filp/whoops": "2.*",
         "opis-colibri/core": "2020.x-dev"
+    },
+    "require-dev": {
+        "filp/whoops": "2.*"
     },
     "config": {
         "process-timeout": 0,

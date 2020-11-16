@@ -34,17 +34,17 @@ return new class implements ApplicationInitializer
         // Timezone settings
         date_default_timezone_set('UTC');
 
-        $dir = $app->getAppInfo()->writableDir() . DIRECTORY_SEPARATOR;
+        $dir = $app->getAppInfo()->writableDir();
 
         if (getenv('APP_PRODUCTION') === false) {
             $cacheDriver = new MemoryCache();
         } else {
-            $cacheDriver = new CacheDriver($dir . 'cache');
+            $cacheDriver = new CacheDriver($dir . '/cache');
         }
 
         $app->setCacheDriver($cacheDriver)
-            ->setConfigDriver(new ConfigDriver($dir . 'config', '', true))
-            ->setTranslatorDriver(new TranslatorDriver($dir . 'intl'));
+            ->setConfigDriver(new ConfigDriver($dir . '/config', '', true))
+            ->setTranslatorDriver(new TranslatorDriver($dir . '/intl'));
 
         // Setup database connection
         // $connection = new \Opis\Database\Connection('dsn', 'user', 'password');
