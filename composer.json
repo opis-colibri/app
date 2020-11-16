@@ -32,13 +32,6 @@
     },
     "prefer-stable": true,
     "minimum-stability": "dev",
-    "scripts": {
-        "docker": "@docker-run composer",
-        "docker-app": "@docker-run php app",
-        "docker-run": "docker run -t --rm -v `pwd`:/code docker.pkg.github.com/opis-colibri/app/cli-alpine",
-        "docker-serve": "docker run -t --rm -v `pwd`:/code -p 8080:80 docker.pkg.github.com/opis-colibri/app/cli-alpine",
-        "docker-serve-app": "docker run -t --rm -v `pwd`:/code -p $PORT:80 docker.pkg.github.com/opis-colibri/app/cli-alpine"
-    },
     "extra": {
         "branch-alias": {
             "dev-master": "2020.x-dev"
