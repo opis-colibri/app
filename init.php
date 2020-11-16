@@ -16,8 +16,8 @@
  * ============================================================================ */
 
 use Opis\Colibri\{
-    ApplicationInitializer,
-    ApplicationContainer
+    Application,
+    ApplicationInitializer
 };
 
 use Opis\Cache\Drivers\{File as CacheDriver, Memory as MemoryCache};
@@ -29,7 +29,7 @@ return new class implements ApplicationInitializer
     /**
      * @inheritDoc
      */
-    public function init(ApplicationContainer $app)
+    public function init(Application $app): void
     {
         // Timezone settings
         date_default_timezone_set('UTC');
