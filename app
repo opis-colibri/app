@@ -16,11 +16,12 @@
  * limitations under the License.
  * ============================================================================ */
 
+if (PHP_SAPI !== 'cli') {
+    echo "CLI Mode only", PHP_EOL;
+    exit(1);
+}
+
 /** @var Opis\Colibri\Application $app */
 $app = require_once __DIR__ . '/bootstrap.php';
-
-if (!$app->getAppInfo()->cliMode()) {
-    die('CLI Mode only' . PHP_EOL);
-}
 
 exit($app->getConsole()->run());

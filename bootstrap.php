@@ -29,6 +29,8 @@ if (getenv('APP_PRODUCTION') === false) {
 // Init serializable closures
 SerializableClosure::init();
 
-$app = new Application(__DIR__);
+$app = new Application(__DIR__, [
+    // custom app info options
+]);
 
 return $app->bootstrap();
