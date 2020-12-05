@@ -28,4 +28,4 @@
 
 $app = require_once __DIR__ . '/bootstrap.php';
 
-$app->serve();
+$app->bootstrap()->serve();
