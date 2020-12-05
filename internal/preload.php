@@ -1,6 +1,6 @@
 <?php
 /* ===========================================================================
- * Copyright 2018-2020 Zindex Software
+ * Copyright 2020 Zindex Software
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,28 +15,6 @@
  * limitations under the License.
  * ============================================================================ */
 
-use Opis\Colibri\Application;
-use Opis\Closure\SerializableClosure;
+require_once __DIR__ . '/../vendor/autoload.php';
 
-require_once __DIR__ . '/vendor/autoload.php';
-
-if (file_exists(__DIR__ . '/storage/env.php')) {
-    $env = require_once __DIR__ . '/storage/env.php';
-    $_ENV += $env;
-    unset($env);
-}
-
-if (!\Opis\Colibri\env('APP_PRODUCTION', false)) {
-    error_reporting(E_ALL);
-    ini_set('display_errors', 1);
-    require_once __DIR__ . '/whoops.php';
-}
-
-// Init serializable closures
-SerializableClosure::init();
-
-$app = new Application(__DIR__, [
-    // custom app info options
-]);
-
-return $app->bootstrap();
+\Opis\Closure\SerializableClosure::preload();
