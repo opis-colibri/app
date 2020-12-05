@@ -30,7 +30,7 @@ return new class implements ApplicationInitializer
     /**
      * @inheritDoc
      */
-    public function init(Application $app): void
+    public function bootstrap(Application $app): void
     {
         // Timezone settings
         date_default_timezone_set('UTC');
@@ -52,6 +52,16 @@ return new class implements ApplicationInitializer
             $connection = new Connection($_ENV['DB_DSN'], $_ENV['DB_USER'], $_ENV['DB_PASSWORD']);
             $app->setDatabaseConnection($connection);
         }
+        echo "Bootstrap\n";
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setup(Application $app): void
+    {
+        // Setup application
+        echo "Setup\n";
     }
 
     /**
@@ -59,11 +69,7 @@ return new class implements ApplicationInitializer
      */
     public function env(Dotenv $dotenv): void
     {
-        // Validate
-        //$dotenv->required('APP_PRODUCTION')->isBoolean();
-
-        //$dotenv->required('DB_DSN');
-        //$dotenv->required('DB_USER');
-        //$dotenv->required('DB_PASSWORD');
+        // Validate environment variables
+        $dotenv->required('APP_PRODUCTION')->isBoolean();
     }
 };
