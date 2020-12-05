@@ -15,18 +15,27 @@
  * limitations under the License.
  * ============================================================================ */
 
-use Opis\Colibri\Application;
+use Opis\Colibri\{
+    Application, ApplicationInfo
+};
 use Opis\Closure\SerializableClosure;
+use function Opis\Colibri\env;
 
-require_once __DIR__ . '/../vendor/autoload.php';
+$root = dirname(__DIR__);
 
-if (file_exists(__DIR__ . '/storage/env.php')) {
-    $env = require_once __DIR__ . '/storage/env.php';
-    $_ENV += $env;
-    unset($env);
+require_once $root . '/vendor/autoload.php';
+
+$info = new ApplicationInfo($root, [
+    // custom app info options
+]);
+
+// Load environment variables
+if (is_file($info->envFile())) {
+    $_ENV += require_once($info->envFile());
 }
 
-if (!\Opis\Colibri\env('APP_PRODUCTION', false)) {
+if (!env('APP_PRODUCTION', false)) {
+    // Set development options
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
     require_once __DIR__ . '/whoops.php';
@@ -35,13 +44,5 @@ if (!\Opis\Colibri\env('APP_PRODUCTION', false)) {
 // Init serializable closures
 SerializableClosure::init();
 
-
-$root = explode('/', __DIR__);
-array_pop($root);
-$root = implode('/', $root);
-
-$app = new Application($root, [
-    // custom app info options
-]);
-
+$app = new Application($info);
 return $app->bootstrap();

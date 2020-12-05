@@ -17,4 +17,12 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+/*
+ * If you use a custom preloader and you don't want
+ * opcache_compile_file() function to be called by
+ * \Opis\Closure\SerializableClosure::preload() then
+ * you can use \Opis\Closure\HeaderFile::preload() to
+ * preload FFI headers for opis/closure library.
+ */
+
 \Opis\Closure\SerializableClosure::preload();

@@ -20,6 +20,10 @@
  * Just type the following command and point your browser to http://localhost:8080/
  *
  * php - S localhost:8080 -t public router.php
+ *  OR
+ * php app serve
+ *  OR
+ * php app serve --host=localhost --port=8080
  */
 
 $app = require_once __DIR__ . '/bootstrap.php';
