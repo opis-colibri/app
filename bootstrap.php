@@ -26,7 +26,7 @@ if (file_exists(__DIR__ . '/storage/env.php')) {
     unset($env);
 }
 
-if (($_ENV['APP_PRODUCTION'] ?? "false") === "false") {
+if (!\Opis\Colibri\env('APP_PRODUCTION', false)) {
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
     require_once __DIR__ . '/whoops.php';

@@ -24,6 +24,7 @@ use Opis\Database\Connection;
 use Opis\Cache\Drivers\{File as CacheDriver, Memory as MemoryCache};
 use Opis\DataStore\Drivers\JSONFile as ConfigDriver;
 use Opis\I18n\Translator\Drivers\JsonFile as TranslatorDriver;
+use function Opis\Colibri\env;
 
 return new class implements ApplicationInitializer
 {
@@ -37,7 +38,7 @@ return new class implements ApplicationInitializer
 
         $dir = $app->getAppInfo()->writableDir();
 
-        if (($_ENV['APP_PRODUCTION'] ?? "false") === "true") {
+        if (env('APP_PRODUCTION', false)) {
             $cacheDriver = new CacheDriver($dir . '/cache');
         } else {
             $cacheDriver = new MemoryCache();
@@ -48,11 +49,10 @@ return new class implements ApplicationInitializer
             ->setTranslatorDriver(new TranslatorDriver($dir . '/intl'));
 
         // Setup database connection
-        if (isset($_ENV['DB_DSN'])) {
-            $connection = new Connection($_ENV['DB_DSN'], $_ENV['DB_USER'], $_ENV['DB_PASSWORD']);
+        if (null !== $dsn = env('DB_DSN')) {
+            $connection = new Connection($dsn, env('DB_USER'), env('DB_PASSWORD'));
             $app->setDatabaseConnection($connection);
         }
-        echo "Bootstrap\n";
     }
 
     /**
@@ -61,15 +61,15 @@ return new class implements ApplicationInitializer
     public function setup(Application $app): void
     {
         // Setup application
-        echo "Setup\n";
     }
 
     /**
      * @inheritDoc
      */
-    public function env(Dotenv $dotenv): void
+    public function validateEnvironmentVariables(Dotenv $dotenv): void
     {
         // Validate environment variables
         $dotenv->required('APP_PRODUCTION')->isBoolean();
+        $dotenv->ifPresent('DB_DSN')->notEmpty();
     }
 };
