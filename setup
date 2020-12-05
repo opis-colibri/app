@@ -21,8 +21,6 @@ if (PHP_SAPI !== 'cli') {
     exit(1);
 }
 
-$_ENV['OPIS_COLIBRI_SKIP_BOOTSTRAP'] = true;
-
 /** @var Opis\Colibri\Application $app */
 $app = require_once __DIR__ . '/internal/bootstrap.php';
 

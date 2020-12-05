@@ -17,4 +17,4 @@
 
 $app = require_once __DIR__ . '/../internal/bootstrap.php';
 
-$app->run();
+$app->bootstrap()->run();

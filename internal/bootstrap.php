@@ -44,5 +44,4 @@ if (!env('APP_PRODUCTION', false)) {
 // Init serializable closures
 SerializableClosure::init();
 
-$app = new Application($info);
-return $app->bootstrap();
+return new Application($info);
