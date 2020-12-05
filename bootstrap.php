@@ -20,7 +20,14 @@ use Opis\Closure\SerializableClosure;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-if (getenv('APP_PRODUCTION') === false) {
+if (file_exists(__DIR__ . '/storage/env.php')) {
+    $env = require_once __DIR__ . '/storage/env.php';
+    $_ENV += $env;
+    $_ENV['OPIS_COLIBRI_DOTENV'] = true;
+    unset($env);
+}
+
+if (($_ENV['APP_PRODUCTION'] ?? "false") === "false") {
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
     require_once __DIR__ . '/whoops.php';

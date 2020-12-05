@@ -19,7 +19,8 @@ use Opis\Colibri\{
     Application,
     ApplicationInitializer
 };
-
+use Dotenv\Dotenv;
+use Opis\Database\Connection;
 use Opis\Cache\Drivers\{File as CacheDriver, Memory as MemoryCache};
 use Opis\DataStore\Drivers\JSONFile as ConfigDriver;
 use Opis\I18n\Translator\Drivers\JsonFile as TranslatorDriver;
@@ -36,10 +37,10 @@ return new class implements ApplicationInitializer
 
         $dir = $app->getAppInfo()->writableDir();
 
-        if (getenv('APP_PRODUCTION') === false) {
-            $cacheDriver = new MemoryCache();
-        } else {
+        if (($_ENV['APP_PRODUCTION'] ?? "false") === "true") {
             $cacheDriver = new CacheDriver($dir . '/cache');
+        } else {
+            $cacheDriver = new MemoryCache();
         }
 
         $app->setCacheDriver($cacheDriver)
@@ -47,7 +48,22 @@ return new class implements ApplicationInitializer
             ->setTranslatorDriver(new TranslatorDriver($dir . '/intl'));
 
         // Setup database connection
-        // $connection = new \Opis\Database\Connection('dsn', 'user', 'password');
-        // $app->setDatabaseConnection($connection);
+        if (isset($_ENV['DB_DSN'])) {
+            $connection = new Connection($_ENV['DB_DSN'], $_ENV['DB_USER'], $_ENV['DB_PASSWORD']);
+            $app->setDatabaseConnection($connection);
+        }
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function env(Dotenv $dotenv): void
+    {
+        // Validate
+        //$dotenv->required('APP_PRODUCTION')->isBoolean();
+
+        //$dotenv->required('DB_DSN');
+        //$dotenv->required('DB_USER');
+        //$dotenv->required('DB_PASSWORD');
     }
 };
