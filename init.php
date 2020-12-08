@@ -51,6 +51,9 @@ return new class implements ApplicationInitializer
         // Setup database connection
         if (null !== $dsn = env('DB_DSN')) {
             $connection = new Connection($dsn, env('DB_USER'), env('DB_PASSWORD'));
+            if ($init = env('DB_INIT')) {
+                $connection->initCommand($init);
+            }
             $app->setDatabaseConnection($connection);
         }
     }
@@ -71,5 +74,6 @@ return new class implements ApplicationInitializer
         // Validate environment variables
         $dotenv->required('APP_PRODUCTION')->isBoolean();
         $dotenv->ifPresent('DB_DSN')->notEmpty();
+        $dotenv->ifPresent('DB_INIT')->notEmpty();
     }
 };
