@@ -34,11 +34,11 @@ return new class implements ApplicationInitializer
     public function bootstrap(Application $app): void
     {
         // Timezone settings
-        date_default_timezone_set('UTC');
-
-        $dir = $app->getAppInfo()->writableDir();
+        date_default_timezone_set(env('APP_TIMEZONE', 'UTC'));
 
         $isProduction = env('APP_PRODUCTION', false);
+
+        $dir = $app->getAppInfo()->writableDir();
 
         if ($isProduction) {
             $cacheDriver = new CacheDriver($dir . '/cache');
