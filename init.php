@@ -38,7 +38,9 @@ return new class implements ApplicationInitializer
 
         $dir = $app->getAppInfo()->writableDir();
 
-        if (env('APP_PRODUCTION', false)) {
+        $isProduction = env('APP_PRODUCTION', false);
+
+        if ($isProduction) {
             $cacheDriver = new CacheDriver($dir . '/cache');
         } else {
             $cacheDriver = new MemoryCache();
@@ -54,6 +56,7 @@ return new class implements ApplicationInitializer
             if ($init = env('DB_INIT')) {
                 $connection->initCommand($init);
             }
+            $connection->throwTransactionExceptions(!$isProduction);
             $app->setDatabaseConnection($connection);
         }
     }
