@@ -21,9 +21,9 @@ use Opis\Colibri\{
 };
 use Dotenv\Dotenv;
 use Opis\Database\Connection;
-use Opis\Cache\Drivers\{File as CacheDriver, Memory as MemoryCache};
-use Opis\DataStore\Drivers\JSONFile as ConfigDriver;
-use Opis\I18n\Translator\Drivers\JsonFile as TranslatorDriver;
+use Opis\Colibri\Cache\Drivers\{File as CacheDriver, Memory as MemoryCache};
+use Opis\Colibri\DataStore\Drivers\JSONFile as ConfigDriver;
+use Opis\Colibri\I18n\Translator\Drivers\JsonFile as TranslatorDriver;
 use function Opis\Colibri\env;
 
 return new class implements ApplicationInitializer
