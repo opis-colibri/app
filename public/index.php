@@ -15,6 +15,6 @@
  * limitations under the License.
  * ============================================================================ */
 
-$app = require_once __DIR__ . '/../internal/bootstrap.php';
+$app = require_once __DIR__ . '/../internal/app.php';
 
 $app->bootstrap()->run();

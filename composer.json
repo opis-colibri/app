@@ -1,7 +1,7 @@
 {
     "name": "opis/colibri",
     "type": "project",
-    "description": "Opis Colibri Framework",
+    "description": "The application shell of the Opis Colibri framework",
     "keywords": [ "opis colibri", "framework", "php", "opis"],
     "homepage": "https://opis.io",
     "license": "Apache-2.0",
@@ -24,9 +24,6 @@
     "require": {
         "php": "^8.0",
         "opis-colibri/core": "2020.x-dev"
-    },
-    "require-dev": {
-        "filp/whoops": "2.*"
     },
     "config": {
         "process-timeout": 0,

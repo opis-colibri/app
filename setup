@@ -22,6 +22,6 @@ if (PHP_SAPI !== 'cli') {
 }
 
 /** @var Opis\Colibri\Application $app */
-$app = require_once __DIR__ . '/internal/bootstrap.php';
+$app = require_once __DIR__ . '/internal/app.php';
 
 exit($app->getSetupConsole()->run());
