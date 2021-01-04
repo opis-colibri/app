@@ -1,6 +1,6 @@
 <?php
 /* ===========================================================================
- * Copyright 2018-2019 Zindex Software
+ * Copyright 2018-2021 Zindex Software
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  * limitations under the License.
  * ============================================================================ */
 
+/** @var Opis\Colibri\Application $app */
 $app = require_once __DIR__ . '/../internal/app.php';
 
 $app->bootstrap()->run();

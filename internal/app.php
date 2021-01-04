@@ -15,10 +15,7 @@
  * limitations under the License.
  * ============================================================================ */
 
-use Opis\Colibri\{
-    Application, ApplicationInfo, PrettyErrors
-};
-use Opis\Closure\SerializableClosure;
+use Opis\Colibri\{Application, ApplicationInfo};
 use function Opis\Colibri\env;
 
 $root = dirname(__DIR__);
@@ -29,19 +26,16 @@ $info = new ApplicationInfo($root, [
     // custom app info options
 ]);
 
-// Load environment variables
-if (is_file($info->envFile())) {
-    $_ENV += require_once($info->envFile());
-}
+$info->initEnv();
 
 if (!env('APP_PRODUCTION', false)) {
     // Set development options
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
-    PrettyErrors::enable();
+    require_once __DIR__ . '/whoops.php';
 }
 
 // Init serializable closures
-SerializableClosure::init();
+Opis\Closure\Library::init();
 
 return new Application($info);

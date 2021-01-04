@@ -35,6 +35,9 @@ return new class implements ApplicationInitializer
     {
         // Timezone settings
         date_default_timezone_set(env('APP_TIMEZONE', 'UTC'));
+        if ($locale = env('APP_LOCALE')) {
+            setlocale(LC_ALL, $locale);
+        }
 
         $isProduction = env('APP_PRODUCTION', false);
 
@@ -46,7 +49,9 @@ return new class implements ApplicationInitializer
             $cacheDriver = new MemoryCache();
         }
 
-        $app->setCacheDriver($cacheDriver)
+        $app
+            ->setDefaultLanguage(env('APP_LANGUAGE'))
+            ->setCacheDriver($cacheDriver)
             ->setConfigDriver(new ConfigDriver($dir . '/config', '', true))
             ->setTranslatorDriver(new TranslatorDriver($dir . '/intl'));
 
@@ -76,6 +81,10 @@ return new class implements ApplicationInitializer
     {
         // Validate environment variables
         $dotenv->required('APP_PRODUCTION')->isBoolean();
+        $dotenv->ifPresent('APP_TIMEZONE')->notEmpty();
+        $dotenv->ifPresent('APP_LANGUAGE')->notEmpty();
+        $dotenv->ifPresent('APP_LOCALE')->notEmpty();
+
         $dotenv->ifPresent('DB_DSN')->notEmpty();
         $dotenv->ifPresent('DB_INIT')->notEmpty();
     }
