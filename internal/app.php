@@ -26,7 +26,10 @@ $info = new ApplicationInfo($root, [
     // custom app info options
 ]);
 
-$info->initEnv();
+// Load environment variables
+if (is_file($info->envFile())) {
+    $_ENV += require_once($info->envFile());
+}
 
 if (!env('APP_PRODUCTION', false)) {
     // Set development options
