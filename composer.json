@@ -1,5 +1,5 @@
 {
-    "name": "opis/colibri",
+    "name": "opis-colibri/app",
     "type": "project",
     "description": "The application shell of the Opis Colibri framework",
     "keywords": [ "opis colibri", "framework", "php", "opis"],
