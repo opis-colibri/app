@@ -1,8 +1,18 @@
-vendor/
-.idea/
+# editor
+.idea
+
+# framework
+vendor
 composer.lock
-package.json
 yarn.lock
 yarn-error.log
 .env
 .env.backup
+
+# public
+public/*
+!public/index.php
+
+# assets
+assets/*
+!assets/.gitkeep
