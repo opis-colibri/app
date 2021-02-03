@@ -1,6 +1,6 @@
 {
-    "dependencies": {
-    },
+    "private": true,
+    "dependencies": {},
     "scripts": {
         "add-module": "php app yarn:add",
         "remove-module": "php app yarn:remove"
